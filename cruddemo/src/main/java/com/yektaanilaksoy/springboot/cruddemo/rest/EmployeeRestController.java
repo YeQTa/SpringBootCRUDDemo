@@ -2,6 +2,8 @@ package com.yektaanilaksoy.springboot.cruddemo.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ import com.yektaanilaksoy.springboot.cruddemo.service.EmployeeService;
 @RequestMapping("/api")
 public class EmployeeRestController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeRestController.class);
+	
 	private EmployeeService employeeService;
 	
 	@Autowired
@@ -28,6 +32,7 @@ public class EmployeeRestController {
 	
 	@GetMapping("/employees")
 	public List<Employee> findAll(){
+		LOGGER.info("Employees have been returned !");
 		return employeeService.findAll();				
 	}
 	
